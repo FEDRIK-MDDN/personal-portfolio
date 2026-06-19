@@ -106,42 +106,135 @@
 .hamburger {
   display: none;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
   cursor: pointer;
   padding: 6px;
+  z-index: 1001;
+  background: none;
+  border: none;
 }
 
 .hamburger span {
   display: block;
-  width: 22px; height: 2px;
+  width: 24px;
+  height: 2px;
   background: var(--text-primary);
   border-radius: 2px;
-  transition: var(--transition);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity   0.25s ease,
+              background 0.3s ease;
+  transform-origin: center;
 }
 
-.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+/* Animate into an X */
+.hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
+/* ── Mobile nav ── */
 @media (max-width: 768px) {
-  .navbar { padding: 0 20px; }
-  .hamburger { display: flex; }
-  .navbar-links {
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  /* Hide desktop contact button */
+  .navbar-contact-btn {
     display: none;
-    position: fixed;
-    top: 72px; left: 0; right: 0;
-    background: rgba(8,8,8,0.98);
-    backdrop-filter: blur(24px);
+  }
+
+  /* Use max-height trick so we get a smooth slide-down transition */
+  .navbar-links {
+    /* Override desktop flex layout */
+    display: flex !important;
     flex-direction: column;
     align-items: center;
     gap: 0;
-    padding: 16px 0 28px;
-    border-bottom: 1px solid rgba(239,68,68,0.15);
+    list-style: none;
+
+    /* Positioning */
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+
+    /* Collapsed state */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+
+    /* Visuals */
+    background: rgba(8, 8, 8, 0.97);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    border-bottom: 1px solid rgba(239, 68, 68, 0.15);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+
+    /* Smooth transition */
+    transition:
+      max-height 0.42s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity    0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      transform  0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(-8px);
   }
-  .navbar-links.open { display: flex; }
-  .navbar-links li { width: 100%; text-align: center; }
-  .navbar-links a { display: block; padding: 14px 0; font-size: 1rem; }
-  .navbar-contact-btn { display: none; }
+
+  /* Open state */
+  .navbar-links.open {
+    max-height: 400px;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+    padding: 12px 0 24px;
+  }
+
+  /* Each menu item */
+  .navbar-links li {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  }
+
+  .navbar-links li:last-child {
+    border-bottom: none;
+  }
+
+  .navbar-links a {
+    display: block;
+    padding: 15px 0;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: color 0.2s ease, background 0.2s ease;
+  }
+
+  .navbar-links a:hover,
+  .navbar-links a.active {
+    color: var(--accent-blue);
+    background: rgba(239, 68, 68, 0.05);
+  }
+
+  /* Underline indicator: centered on mobile */
+  .navbar-links a::after {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 8px;
+  }
+
+  .navbar-links a.active::after,
+  .navbar-links a:hover::after {
+    width: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* Prevent body scroll when mobile menu is open */
+body.nav-open {
+  overflow: hidden;
 }
 
 /* ============================================================

@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const navRef = useRef(null);
 
   const navLinks = [
     { id: 'home', label: 'Home' },
@@ -33,6 +34,23 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (navRef.current && !navRef.current.contains(e.target)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Toggle body scroll lock
+  useEffect(() => {
+    document.body.classList.toggle('nav-open', menuOpen);
+    return () => document.body.classList.remove('nav-open');
+  }, [menuOpen]);
+
   const scrollTo = (id) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -40,7 +58,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`} ref={navRef}>
       <div className="navbar-brand" onClick={() => scrollTo('home')}>
         Portfolio
       </div>
@@ -67,17 +85,17 @@ const Navbar = () => {
         Contact
       </button>
 
-      <div
+      <button
         className={`hamburger ${menuOpen ? 'open' : ''}`}
         onClick={() => setMenuOpen(o => !o)}
-        aria-label="Toggle menu"
-        role="button"
-        tabIndex={0}
+        aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+        aria-expanded={menuOpen}
+        type="button"
       >
         <span></span>
         <span></span>
         <span></span>
-      </div>
+      </button>
     </nav>
   );
 };
