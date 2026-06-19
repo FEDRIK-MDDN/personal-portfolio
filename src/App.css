@@ -823,20 +823,27 @@ body.nav-open {
 }
 
 @media (max-width: 900px) {
-  .about-grid { grid-template-columns: 1fr; gap: 48px; text-align: center; }
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    text-align: center;
+  }
+  /* Move photo ABOVE the text on mobile */
+  .about-photo-wrapper { order: -1; }
+  .about-text          { order:  1; }
   .about-badges { justify-content: center; }
   .about-actions { justify-content: center; }
-  .about-photo-card { width: 280px; }
-  .about-photo-img, .about-photo-placeholder { height: 320px; }
+  .about-photo-card { width: 220px; }
+  .about-photo-img, .about-photo-placeholder { height: 260px; }
 }
 
 @media (max-width: 768px) {
-  .about-grid { gap: 36px; }
+  .about-grid { gap: 24px; }
   .about-badges { grid-template-columns: repeat(3, 1fr); gap: 10px; }
   .about-badge { padding: 14px 10px; }
   .about-badge-number { font-size: 1.6rem; }
-  .about-photo-card { width: 240px; }
-  .about-photo-img, .about-photo-placeholder { height: 280px; }
+  .about-photo-card { width: 200px; }
+  .about-photo-img, .about-photo-placeholder { height: 240px; }
 }
 
 @media (max-width: 480px) {
