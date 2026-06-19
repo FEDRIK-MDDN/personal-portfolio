@@ -1,0 +1,544 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&display=swap');
+
+/* ===== CSS VARIABLES – Dark Red & Black Premium Theme ===== */
+:root {
+  /* Backgrounds */
+  --bg-primary:     #080808;
+  --bg-secondary:   #0f0b0b;
+  --bg-card:        rgba(255, 255, 255, 0.035);
+  --bg-card-hover:  rgba(220, 38, 38, 0.07);
+  --border:         rgba(255, 255, 255, 0.08);
+  --border-glow:    rgba(239, 68, 68, 0.5);
+
+  /* Accent palette */
+  --accent-blue:    #ef4444;   /* primary red  */
+  --accent-purple:  #b91c1c;   /* deep crimson */
+  --accent-cyan:    #f87171;   /* rose         */
+
+  /* Gradients */
+  --gradient:       linear-gradient(135deg, #b91c1c 0%, #ef4444 60%, #f87171 100%);
+  --gradient-text:  linear-gradient(135deg, #ef4444 0%, #f87171 50%, #fca5a5 100%);
+  --gradient-glow:  radial-gradient(ellipse at center, rgba(239,68,68,0.15) 0%, transparent 70%);
+
+  /* Text */
+  --text-primary:   #fafafa;
+  --text-secondary: #a8a8a8;
+  --text-muted:     #555555;
+
+  /* Shadows */
+  --shadow-glow:  0 0 40px rgba(239, 68, 68, 0.2);
+  --shadow-card:  0 4px 24px rgba(0, 0, 0, 0.6);
+  --shadow-btn:   0 4px 24px rgba(239, 68, 68, 0.45);
+
+  /* Misc */
+  --font:         'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --radius:       14px;
+  --radius-lg:    22px;
+  --transition:   all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== RESET & BASE ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Subtle noise texture */
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(239,68,68,0.08) 0%, transparent 60%);
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== TYPOGRAPHY ===== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+p {
+  font-family: var(--font-body);
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+
+/* ===== GRADIENT TEXT UTILITY ===== */
+.gradient-text {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== SECTION UTILITY ===== */
+.section {
+  padding: 110px 0;
+  position: relative;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ===== SECTION TITLE ===== */
+.section-title {
+  font-family: var(--font);
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 14px;
+  letter-spacing: -0.03em;
+}
+
+.section-title span {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-bottom: 70px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+}
+
+/* ===== BUTTONS ===== */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  border-radius: 50px;
+  background: var(--gradient);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: var(--font);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-btn);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.01em;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 36px rgba(239, 68, 68, 0.6);
+}
+
+.btn-primary:hover::before {
+  opacity: 1;
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 32px;
+  border-radius: 50px;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: var(--font);
+  border: 1.5px solid rgba(255,255,255,0.15);
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+  backdrop-filter: blur(8px);
+}
+
+.btn-outline:hover {
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  background: rgba(239, 68, 68, 0.08);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.15);
+}
+
+/* ===== GLASSMORPHISM CARD ===== */
+.glass-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: var(--transition);
+}
+
+.glass-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-glow);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-4px);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.3); }
+  50%       { box-shadow: 0 0 50px rgba(239, 68, 68, 0.7); }
+}
+
+@keyframes typing-cursor {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+
+/* ╔══════════════════════════════════════════════════════════════╗
+   ║   PREMIUM SCROLL REVEAL ANIMATION SYSTEM                    ║
+   ║   Repeats every scroll — in AND out                         ║
+   ║   Types: fade-up | fade-down | fade-left | fade-right |     ║
+   ║          zoom-in | card-up | scale-up                       ║
+   ╚══════════════════════════════════════════════════════════════╝ */
+
+/* ── 1. BASE — all hidden by default ───────────────────────────── */
+[data-reveal] {
+  opacity: 0;
+  will-change: opacity, transform;
+  transition:
+    opacity   0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── 2. INITIAL TRANSFORMS per animation type ───────────────────── */
+
+/* Fade In Up */
+[data-reveal="fade-up"] {
+  transform: translateY(40px);
+  transition-duration: 0.42s;
+}
+
+/* Fade In Down */
+[data-reveal="fade-down"] {
+  transform: translateY(-40px);
+  transition-duration: 0.42s;
+}
+
+/* Fade In Left (slides from left) */
+[data-reveal="fade-left"] {
+  transform: translateX(-48px);
+  transition-duration: 0.45s;
+}
+
+/* Fade In Right (slides from right) */
+[data-reveal="fade-right"] {
+  transform: translateX(48px);
+  transition-duration: 0.45s;
+}
+
+/* Zoom In */
+[data-reveal="zoom-in"] {
+  transform: scale(0.82);
+  transition-duration: 0.38s;
+  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Scale Up (tools/pills — subtle pop) */
+[data-reveal="scale-up"] {
+  transform: scale(0.80) translateY(14px);
+  transition-duration: 0.35s;
+  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Card Up (project cards — lift + slight scale) */
+[data-reveal="card-up"] {
+  transform: translateY(64px) scale(0.94);
+  /* Do NOT use shorthand here — lets is-exit-top override transition-duration */
+  transition-property: opacity, transform;
+  transition-duration: 0.78s;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── Project section specific animations ─────────────────────── */
+
+.project-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  will-change: opacity, transform;
+  transition:
+    opacity   0.40s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.40s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.project-reveal.is-visible  { opacity: 1; transform: translateY(0); transition-delay: 0s; }
+.project-reveal.is-exit-top { opacity: 0; transform: translateY(-24px);
+  transition-duration: 0.28s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
+  transition-delay: 0s !important; }
+
+/* Card animation — separate class so we fully control transition */
+.project-card-anim {
+  opacity: 0;
+  transform: translateY(44px) scale(0.96);
+  will-change: opacity, transform;
+  transition:
+    opacity   0.40s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.40s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-card-anim.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: 0s;
+}
+
+.project-card-anim.is-exit-top {
+  opacity: 0;
+  transform: translateY(-22px) scale(0.98);
+  transition-duration: 0.28s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
+  transition-delay: 0s !important;
+}
+
+/* ── 3. VISIBLE STATE — all types resolve to identity ────────────── */
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+  /* Reset any stagger delay so repeated entries don't lag */
+  transition-delay: 0s;
+}
+
+/* ── 4. EXIT FROM TOP — element scrolled ABOVE viewport ─────────────
+   All types exit going UPWARD (matches scroll direction).
+   Shorter duration (0.55s) makes scroll-up feel crisp, not laggy.
+   transition-delay: 0 cancels any data-delay stagger on exit.       */
+
+[data-reveal].is-exit-top {
+  opacity: 0;
+  transition-duration: 0.32s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
+  transition-delay: 0s !important;
+}
+
+/* Each type exits in a direction that matches its entry axis */
+[data-reveal="fade-up"].is-exit-top    { transform: translateY(-35px); }
+[data-reveal="fade-down"].is-exit-top  { transform: translateY(35px);  }
+[data-reveal="fade-left"].is-exit-top  { transform: translateX(-40px) translateY(-20px); }
+[data-reveal="fade-right"].is-exit-top { transform: translateX(40px)  translateY(-20px); }
+[data-reveal="zoom-in"].is-exit-top    { transform: scale(0.88) translateY(-20px); }
+[data-reveal="scale-up"].is-exit-top   { transform: scale(0.88) translateY(-16px); }
+[data-reveal="card-up"].is-exit-top    { transform: translateY(-28px) scale(0.97); }
+
+/* ── 5. EXIT FROM BOTTOM — element scrolled BELOW viewport ──────────
+   Class removed entirely → returns to initial transform automatically.
+   This is the default "no-class" state, no extra rules needed.       */
+
+
+/* ── 5. STAGGER HELPER — .stagger-children adds delays to children  */
+.stagger-children > [data-reveal]:nth-child(1)  { transition-delay: 0.00s; }
+.stagger-children > [data-reveal]:nth-child(2)  { transition-delay: 0.08s; }
+.stagger-children > [data-reveal]:nth-child(3)  { transition-delay: 0.16s; }
+.stagger-children > [data-reveal]:nth-child(4)  { transition-delay: 0.24s; }
+.stagger-children > [data-reveal]:nth-child(5)  { transition-delay: 0.32s; }
+.stagger-children > [data-reveal]:nth-child(6)  { transition-delay: 0.40s; }
+.stagger-children > [data-reveal]:nth-child(7)  { transition-delay: 0.48s; }
+.stagger-children > [data-reveal]:nth-child(8)  { transition-delay: 0.56s; }
+
+/* ── 6. PARALLAX BACKGROUND — applied to hero & sections ────────── */
+.parallax-section {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Floating ambient orbs that drift slowly */
+.parallax-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  animation: orb-drift 12s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.parallax-orb-1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(239,68,68,0.18), transparent 70%);
+  top: -100px; right: -100px;
+  animation-duration: 14s;
+}
+
+.parallax-orb-2 {
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, rgba(185,28,28,0.14), transparent 70%);
+  bottom: -80px; left: -80px;
+  animation-duration: 10s;
+  animation-delay: -5s;
+}
+
+.parallax-orb-3 {
+  width: 250px; height: 250px;
+  background: radial-gradient(circle, rgba(248,113,113,0.10), transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation-duration: 18s;
+  animation-delay: -9s;
+}
+
+@keyframes orb-drift {
+  0%   { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(30px, -20px) scale(1.05); }
+  66%  { transform: translate(-20px, 30px) scale(0.97); }
+  100% { transform: translate(15px, -40px) scale(1.03); }
+}
+
+/* ── 7. SECTION ENTRANCE — the section itself glows in ─────────── */
+.section-glow-enter {
+  animation: section-glow-pulse 1.2s ease-out both;
+}
+
+@keyframes section-glow-pulse {
+  0%   { box-shadow: 0 0 0 rgba(239,68,68,0); }
+  50%  { box-shadow: 0 0 60px rgba(239,68,68,0.08); }
+  100% { box-shadow: 0 0 0 rgba(239,68,68,0); }
+}
+
+/* ── 8. LEGACY .reveal CLASSES — kept for backward compat ────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(32px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+/* ── 9. REDUCED MOTION — respect accessibility ───────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  .reveal, .reveal-left, .reveal-right,
+  .parallax-orb {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ef4444, #b91c1c);
+  border-radius: 3px;
+}
+
+/* ===== SELECTION ===== */
+::selection {
+  background: rgba(239, 68, 68, 0.35);
+  color: var(--text-primary);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .section { padding: 70px 0; }
+  .section-title { font-size: 1.9rem; }
+  .section-subtitle { font-size: 0.925rem; margin-bottom: 50px; }
+  .container { padding: 0 18px; }
+  .btn-primary, .btn-outline { padding: 12px 24px; font-size: 0.9rem; }
+}
+
+@media (max-width: 480px) {
+  .section { padding: 56px 0; }
+  .section-title { font-size: 1.65rem; }
+  .section-subtitle { font-size: 0.875rem; margin-bottom: 38px; }
+  .container { padding: 0 14px; }
+  .btn-primary, .btn-outline { padding: 11px 20px; font-size: 0.875rem; }
+}
