@@ -134,6 +134,24 @@ import p6img9 from './assets/images/project6/p1img9.png';   // ✅
 import p6img10 from './assets/images/project6/p1img10.png';  // ✅
 
 // ============================================================
+// 🖼️  PROJECT 7 SCREENSHOTS  (HomeChef Connect – Food Delivery Android App)
+//     → Put images in: src/assets/images/project7/
+//     → Rename them exactly: p7cover.jpeg, p7img1.png ... p7img10.png
+//     → Uncomment each line once you add the file
+// ============================================================
+import p7cover from './assets/images/project7/p7cover.jpeg'; // ✅ Cover
+import p7img1 from './assets/images/project7/p7img1.jpg';   // ✅ Splash / Landing Screen
+import p7img2 from './assets/images/project7/p7img2.jpg';   // ✅ Auth / Login Screen
+import p7img3 from './assets/images/project7/p7img3.jpg';   // ✅ Customer Home Screen
+import p7img4 from './assets/images/project7/p7img4.jpg';   // ✅ Food Details Screen
+import p7img5 from './assets/images/project7/p7img5.jpg';   // ✅ Cart & Checkout Screen
+import p7img6 from './assets/images/project7/p7img6.jpg';   // ✅ Chef AI Chat Screen
+import p7img7 from './assets/images/project7/p7img7.jpg';   // ✅ Order Tracking Screen
+import p7img8 from './assets/images/project7/p7img8.jpg';   // ✅ Cook Dashboard
+import p7img9 from './assets/images/project7/p7img9.jpg';   // ✅ Delivery Map Screen
+import p7img10 from './assets/images/project7/p7img10.jpg'; // ✅ Admin Dashboard / Profile
+
+// ============================================================
 // 🔧 PORTFOLIO CONFIGURATION – Update these with your details!
 // ============================================================
 const CONFIG = {
@@ -680,6 +698,116 @@ const CONFIG = {
         'MySQL database integration',
         'Role-based access control',
         'User-friendly study resource sharing workflow',
+      ],
+    },
+
+    {
+      id: 7,
+      title: 'HomeChef Connect – Food Delivery Android App',
+
+      description:
+        'A full-stack Android food delivery platform that connects home cooks, customers, and delivery partners through an AI-powered, multi-role experience.',
+
+      longDescription:
+        'HomeChef Connect is a feature rich Android food delivery application built with Kotlin and Jetpack Compose, powered by the Gemini AI API. The app supports four distinct user roles — Customer, Home Cook, Delivery Partner, and Admin — each with a dedicated dashboard and tailored workflow. Customers can browse home-cooked meals, filter by category, manage a cart with promo code support, track orders in real time, and get AI-powered meal recommendations via the Chef AI chatbot. Home Cooks can manage their menu, accept or reject incoming orders, and update dish availability. Delivery Partners can claim deliveries and navigate via an integrated delivery map screen. Admins oversee all users, approve cook registrations, and manage platform operations. The app uses Room (SQLite) for local persistence of cart items, favorites, and user profiles, and follows the MVVM architecture pattern with StateFlow and Jetpack Compose for a reactive, modern UI.',
+
+      tags: [
+        'Kotlin',
+        'Jetpack Compose',
+        'Android Studio',
+        'Android',
+        'Room (SQLite)',
+        'MVVM',
+        'Gemini AI API',
+        'Firebase',
+        'Retrofit',
+        'Coroutines',
+        'Material Design 3',
+        'Coil',
+      ],
+
+      emoji: '🍽️',
+
+      image: p7cover,       // ✅ Cover image active
+
+      // ──────────────────────────────────────────────────────────────
+      // 📸 10 SCREENSHOTS ACTIVE FOR PROJECT 7
+      // ──────────────────────────────────────────────────────────────
+      images: [
+        p7img1,   // ✅ Splash / Landing Screen
+        p7img2,   // ✅ Auth / Login Screen
+        p7img3,   // ✅ Customer Home Screen
+        p7img4,   // ✅ Food Details Screen
+        p7img5,   // ✅ Cart & Checkout Screen
+        p7img6,   // ✅ Chef AI Chat Screen
+        p7img7,   // ✅ Order Tracking Screen
+        p7img8,   // ✅ Cook Dashboard
+        p7img9,   // ✅ Delivery Map Screen
+        p7img10,  // ✅ Admin Dashboard / Profile
+      ],
+
+      link: '#',
+      github: 'https://github.com/FEDRIK-MDDN/homechef-connect-android-app.git',
+
+      year: '2025',
+      status: 'Completed',
+
+      role: 'Android Developer (Personal Project)',
+
+      howItWorks: [
+        {
+          title: 'Multi-Role Authentication',
+          description:
+            'Users select their role (Customer, Cook, Delivery, Admin) at login. The app validates account status — including suspension checks — before granting access and routing each role to its dedicated dashboard.',
+        },
+        {
+          title: 'Smart Food Discovery & AI Recommendations',
+          description:
+            'Customers browse a curated feed of home-cooked meals with category filters, search, and featured dishes. The integrated Chef AI chatbot — powered by Gemini AI — understands natural language preferences and recommends personalized meals from the live menu.',
+        },
+        {
+          title: 'Cart, Promo Codes & Multi-Cook Checkout',
+          description:
+            'Items from multiple cooks can be added to a single cart. Customers apply promo codes for discounts, review order summaries, choose payment methods, add delivery notes, and confirm orders — which are then split per-cook automatically.',
+        },
+        {
+          title: 'Real-Time Order Lifecycle Management',
+          description:
+            'Orders flow through a defined status pipeline (Pending → Accepted → Preparing → Ready → Picked Up → Out for Delivery → Delivered). Cooks update kitchen status, delivery partners claim and navigate orders via a map screen, and customers track progress live.',
+        },
+        {
+          title: 'Cook Menu & Inventory Management',
+          description:
+            'Home Cooks manage their own dish listings through a dedicated dashboard — adding new items with images, descriptions, pricing, categories, ingredients, and allergen information, and toggling availability in real time.',
+        },
+        {
+          title: 'Admin Control Panel',
+          description:
+            'The Admin dashboard provides full platform oversight: approving new cook registrations, suspending or reinstating user accounts, and monitoring all active orders across all roles.',
+        },
+      ],
+
+      features: [
+        'Four-role system: Customer, Home Cook, Delivery Partner, Admin',
+        'Gemini AI-powered Chef AI chatbot for meal recommendations',
+        'Home-cooked meal browsing with categories and search',
+        'Favorites system with persistent local storage',
+        'Cart management with quantity control and item removal',
+        'Promo code support with automatic discount calculation',
+        'Multi-cook order splitting at checkout',
+        'Full order lifecycle tracking (9 status stages)',
+        'Real-time delivery map and navigation screen',
+        'Cook dashboard: accept/reject orders, manage menu',
+        'Cook menu management: add, edit, toggle availability, delete dishes',
+        'Delivery partner dashboard: claim deliveries, update status',
+        'Admin dashboard: approve cooks, suspend/reinstate users',
+        'User profile management with photo upload support',
+        'Room (SQLite) local persistence for cart, favorites, and profile',
+        'MVVM architecture with StateFlow and Jetpack Compose',
+        'Firebase App Check & Google Services integration',
+        'Material Design 3 UI with edge-to-edge support',
+        'Offline-resilient local data with Room database',
+        'Smooth Compose animations and responsive layouts',
       ],
     },
 
