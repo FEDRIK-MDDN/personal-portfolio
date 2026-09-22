@@ -152,6 +152,22 @@ import p7img9 from './assets/images/project7/p7img9.jpg';   // ✅ Delivery Map 
 import p7img10 from './assets/images/project7/p7img10.jpg'; // ✅ Admin Dashboard / Profile
 
 // ============================================================
+// 🖼️  PROJECT 8 SCREENSHOTS  (BloodLife – Emergency Blood Donation Network App)
+//     → Files are in: src/assets/images/project8/
+// ============================================================
+import p8cover from './assets/images/project8/p8cover.jpeg'; // ✅ Cover
+import p8img1 from './assets/images/project8/p8img1.jpg';   // ✅ Onboarding screen
+import p8img2 from './assets/images/project8/p8img2.jpg';   // ✅ Login / Registration screen
+import p8img3 from './assets/images/project8/p8img3.jpg';   // ✅ Home Dashboard – Emergency Requests feed
+import p8img4 from './assets/images/project8/p8img4.jpg';   // ✅ Home Dashboard – Nearby Donors section
+import p8img5 from './assets/images/project8/p8img5.jpg';   // ✅ Donor Search screen with blood group filters
+import p8img6 from './assets/images/project8/p8img6.jpg';   // ✅ Interactive Map screen (OSM) with emergency markers
+import p8img7 from './assets/images/project8/p8img7.jpg';   // ✅ Create Emergency Request bottom sheet
+import p8img8 from './assets/images/project8/p8img8.jpg';   // ✅ Profile screen with donor stats & reward points
+import p8img9 from './assets/images/project8/p8img9.jpg';   // ✅ Donation History screen with certificates
+import p8img10 from './assets/images/project8/p8img10.jpg'; // ✅ Notifications screen
+
+// ============================================================
 // 🔧 PORTFOLIO CONFIGURATION – Update these with your details!
 // ============================================================
 const CONFIG = {
@@ -808,6 +824,114 @@ const CONFIG = {
         'Material Design 3 UI with edge-to-edge support',
         'Offline-resilient local data with Room database',
         'Smooth Compose animations and responsive layouts',
+      ],
+    },
+
+    {
+      id: 8,
+      title: 'BloodLife – Emergency Blood Donation Network App',
+
+      description:
+        'A premium emergency blood donation Android application that connects donors with hospitals in real time, broadcasts urgent blood requests, and tracks donation history with a gamified reward system.',
+
+      longDescription:
+        'BloodLife is an emergency blood donation network Android application built with Kotlin, Jetpack Compose, and the Gemini AI API. The app enables users to onboard, register as active blood donors, discover nearby donors on an interactive OpenStreetMap, respond to live emergency blood requests, and track their full donation history with certificates. It features a real-time emergency broadcast system that alerts nearby compatible donors, a gamified reward and achievements system (lives saved, reward points), and a fully offline-capable local database powered by Room. The architecture follows MVVM clean architecture principles with a Repository layer, StateFlow-driven UI state, and animated Compose navigation. BloodLife was built and deployed via Google AI Studio, integrating the Firebase App Check and Gemini AI for intelligent emergency response capabilities.',
+
+      tags: [
+        'Kotlin',
+        'Jetpack Compose',
+        'Android Studio',
+        'Android',
+        'Room / SQLite',
+        'MVVM',
+        'Firebase',
+        'Gemini AI',
+        'OpenStreetMap',
+        'Material Design 3',
+        'Google AI Studio',
+      ],
+
+      emoji: '🩸',
+
+      image: p8cover,       // ✅ Cover image active
+
+      // ──────────────────────────────────────────────────────────────
+      // 📸 10 SCREENSHOTS ACTIVE FOR PROJECT 8
+      // ──────────────────────────────────────────────────────────────
+      images: [
+        p8img1,   // ✅ Onboarding screen
+        p8img2,   // ✅ Login / Registration screen
+        p8img3,   // ✅ Home Dashboard – Emergency Requests feed
+        p8img4,   // ✅ Home Dashboard – Nearby Donors section
+        p8img5,   // ✅ Donor Search screen with blood group filters
+        p8img6,   // ✅ Interactive Map screen (OSM) with emergency markers
+        p8img7,   // ✅ Create Emergency Request bottom sheet
+        p8img8,   // ✅ Profile screen with donor stats & reward points
+        p8img9,   // ✅ Donation History screen with certificates
+        p8img10,  // ✅ Notifications screen
+      ],
+
+      link: '#',
+      github: 'https://github.com/FEDRIK-MDDN/blooddonateapp.git',
+
+      year: '2025',
+      status: 'Completed',
+
+      role: 'Android Developer (Personal Project)',
+
+      howItWorks: [
+        {
+          title: 'Onboarding & Authentication',
+          description:
+            "New users are guided through a beautiful multi-step onboarding flow introducing the app's mission. They then log in or register to access their personalized donor dashboard and profile.",
+        },
+        {
+          title: 'Emergency Blood Request Broadcast',
+          description:
+            'Users can create an emergency blood request by specifying the patient name, blood group, hospital, units needed, and urgency level. The request is instantly broadcast to all nearby compatible donors via real-time notifications.',
+        },
+        {
+          title: 'Donor Discovery & Search',
+          description:
+            'The Search screen lets users find nearby donors by name, location, or blood group using advanced filters including blood group chips and an “Available Only” toggle, backed by a reactive Room database query.',
+        },
+        {
+          title: 'Interactive Map & Location Awareness',
+          description:
+            'An OpenStreetMap-powered map screen visualises donor locations and active emergency zones. Users can search any location, view emergency markers, get directions, and call donors directly from the map.',
+        },
+        {
+          title: 'Donation Tracking & Gamified Rewards',
+          description:
+            'Every confirmed donation is recorded with the hospital name, date, volume (ml), blood group, and a unique certificate number. Donors earn reward points and “lives saved” stats, unlocking achievement badges displayed on their profile.',
+        },
+        {
+          title: 'Smart Notifications',
+          description:
+            'The notifications centre delivers emergency alerts, stock warnings, and achievement unlocks. Notifications are categorised by type (EMERGENCY, ACCEPTED, STOCK_ALERT) and can be individually marked as read.',
+        },
+      ],
+
+      features: [
+        'Multi-step onboarding and login flow',
+        'Real-time emergency blood request broadcasting',
+        'Create & respond to emergency requests with urgency levels (CRITICAL / URGENT / STANDARD)',
+        'Nearby donor discovery with real-time Room database queries',
+        'Advanced donor search with blood group filter chips and availability toggle',
+        'Interactive map powered by OpenStreetMap (osmdroid) with live location',
+        'Emergency request markers and hospital navigation on map',
+        'Gamified donor profile: lives saved, reward points, achievement badges',
+        'Full donation history with certificate numbers and volume tracking',
+        'Smart categorised notification centre',
+        'Donor availability toggle with instant status broadcast',
+        'Offline-first architecture using Room (SQLite) database',
+        'MVVM architecture with Repository pattern and StateFlow',
+        'Animated Compose navigation with screen transition effects',
+        'Floating bottom navigation bar with emergency FAB',
+        'Material Design 3 with custom Blood-Red theme palette',
+        'Gemini AI integration for intelligent emergency response',
+        'Firebase App Check (reCAPTCHA) for security',
+        'Edge-to-edge display with status bar and navigation bar handling',
       ],
     },
 
